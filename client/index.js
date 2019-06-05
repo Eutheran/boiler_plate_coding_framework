@@ -5,6 +5,7 @@ import {Router} from 'react-router-dom'
 import history from './history'
 import store from './store'
 import App from './app'
+import './index.css' //will apply styles to everything from a single CSS file by injecting a <style> tag into the DOM
 
 // establishes socket connection
 import './socket'

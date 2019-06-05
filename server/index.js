@@ -7,7 +7,7 @@ const passport = require('passport')
 const SequelizeStore = require('connect-session-sequelize')(session.Store)
 const db = require('./db')
 const sessionStore = new SequelizeStore({db})
-const PORT = process.env.PORT || 8080
+const PORT = process.env.PORT || 3000
 const app = express()
 const socketio = require('socket.io')
 module.exports = app
@@ -54,10 +54,10 @@ const createApp = () => {
   // session middleware with passport
   app.use(
     session({
-      secret: process.env.SESSION_SECRET || 'my best friend is Cody',
+      secret: process.env.SESSION_SECRET || 'wow wow wee wow',
       store: sessionStore,
       resave: false,
-      saveUninitialized: false
+      saveUninitialized: false,
     })
   )
   app.use(passport.initialize())
@@ -96,9 +96,11 @@ const createApp = () => {
 
 const startListening = () => {
   // start listening (and create a 'server' object representing our server)
-  const server = app.listen(PORT, () =>
-    console.log(`Mixing it up on port ${PORT}`)
-  )
+  const server = app.listen(PORT, () => {
+    console.log('Knock, knock')
+    console.log("Who's there?")
+    console.log(`Your server, listening on port ${PORT}`)
+  })
 
   // set up our socket control center
   const io = socketio(server)
